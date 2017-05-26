@@ -1,0 +1,116 @@
+<template>
+
+    <div class="header">
+        <div class="wrapper">
+            <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
+            <div class="caption-page">О нас</div>
+            <a  route-href="route: platform" class="all-company"></a>
+        </div>
+    </div>
+    <!--<a href="#" id="menu-btn-toggle" class=""></a>-->
+    <div id="overlay" class="${display ? 'active' : ''}" click.delegate="toggle()"> </div>
+    <div id="myPanelDefault" class="${display ? 'active' : ''}"  >
+        <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
+            <a href="#" class="close" click.delegate="toggle()"></a>
+            <span class="user_name">Tiffany Henderson</span>
+            <li>
+                <a route-href="route: about">Главная страница</a>
+            </li>
+            <li>
+                <a route-href="route: about">О нас</a>
+            </li>
+            <li>
+                <a href="#">Кампании</a>
+            </li>
+            <li>
+                <a href="#">Новости платформы</a>
+            </li>
+            <li>
+                <a href="#">Частые вопросы</a>
+            </li>
+            <li>
+                <a class="last_item-menu" href="#">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="wrapper">
+            <div class="top_layout">
+                <div class="wrap_about-us">
+                    <h1>о платформе</h1>
+                    <div class="wrapper">
+                        <p class="more_about-us">
+                            Таблеточки создали SuperTeam в 2016 году для фандрайзинговых кампаний в пользу своих подопечных.
+                        </p>
+                        <p class="more_about-us">
+                            Собирать деньги на SuperTeam может каждый желающий, все, что для этого нужно – выбрать свой формат кампании и зарегистрироваться на сайте.
+                        </p>
+                        <p class="more_about-us">
+                            Все кампании на этом сайте надежны и проверены фондом, а пожертвования автоматически поступают на наш счет. Собранные деньги мы тратим исключительно на проекты Таблеточек. Присоединяйтесь к нашей суперкоманде прямо сейчас, давайте менять мир вместе.
+                        </p>
+                        <div class="wrap_slider-what_maney">
+                            <h3>на что нужны деньги</h3>
+                            <div class="autoplay">
+                                <div>
+                                    <div class="wrap_slide">
+                                        <img src="src/assets/img/slaid1.png">
+                                        <img src="">
+                                        <span>1 000 гривен</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="wrap_slide">
+                                        <img src="src/assets/img/slaid1.png">
+                                        <span>1 001 гривен</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="wrap_slide">
+                                        <img src="src/assets/img/slaid1.png">
+                                        <span>1 002 гривен</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-help">Помочь сейчас!</a>
+                        <div class="how_this_work">
+                            <h3>как это работает</h3>
+                            <div class="work_item clearfix">
+                                <div class="number_work">1</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+                            <div class="work_item clearfix">
+                                <div class="number_work">2</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+                            <div class="work_item clearfix">
+                                <div class="number_work">3</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h3>Мы в соц. сетях</h3>
+        <div class="wrap_share">
+            <ul>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

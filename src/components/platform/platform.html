@@ -1,0 +1,185 @@
+<template>
+    <div class="header">
+        <div class="wrapper">
+            <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
+            <div class="caption-page">Кампании</div>
+            <a  route-href="route: home" class="all-company"></a>
+        </div>
+    </div>
+    <!--<a href="#" id="menu-btn-toggle" class=""></a>-->
+    <div id="overlay" class="${display ? 'active' : ''}" click.delegate="toggle()"> </div>
+    <div id="myPanelDefault" class="${display ? 'active' : ''}"  >
+        <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
+            <a href="#" class="close" click.delegate="toggle()"></a>
+            <span class="user_name">Tiffany Henderson</span>
+            <li>
+                <a route-href="route: about">Главная страница</a>
+            </li>
+            <li>
+                <a route-href="route: about">О нас</a>
+            </li>
+            <li>
+                <a href="#">Кампании</a>
+            </li>
+            <li>
+                <a href="#">Новости платформы</a>
+            </li>
+            <li>
+                <a href="#">Частые вопросы</a>
+            </li>
+            <li>
+                <a class="last_item-menu" href="#">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="main">
+        <div class="wrapper">
+            <div class="top_layout">
+                <div class="wrap_platform">
+                    <h1>Акции и Платформы</h1>
+                    <div class="wrapper">
+                        <div class="wrap_form">
+                            <form class="form_search">
+                                <input type="text" name="search" class="search">
+                                <button type="submit" ></button>
+                            </form>
+                        </div>
+                        <div class="wrapper">
+                            <span class="description-text">Lorem ipsum dolor sit amet, consect</span>
+                            <div class="donate-filters">
+                                <div class="filter-wrapper" click.delegate="toggle2()">
+                                    <div class="filter-head link">
+                                        <div class="filter-text" >Категория</div>
+                                        <div class="filter-arrow"></div>
+                                    </div>
+                                    <div class="filter-default">Категория</div>
+                                    <ul class="filter-list ${display2 ? 'active' : ''} ">
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns" title="Все">
+                                                Все                </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=blagotvoritelnost-vmesto-suvenirov" title="Благотворительность вместо сувениров">
+                                                Благотворительность вместо сувениров
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=odin-den-dlja-detej" title="Один день для детей">
+                                                Один день для детей
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=ofisnye-jarmarki" title="Офисные ярмарки">
+                                                Офисные ярмарки
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=sorevnovaniya-i-razvlecheniya" title="Соревнования и развлечения">
+                                                Соревнования и развлечения
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=lichnye-prazdniki" title="Личные праздники">
+                                                Личные праздники
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=jarmarki-i-rasprodazhi" title="Ярмарки и распродажи">
+                                                Ярмарки и распродажи
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=dlya-tvorcheskikh-lyudey" title="Для творческих людей">
+                                                Для творческих людей
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=deti-pomogayut-detyam" title="Дети помогают детям">
+                                                Дети помогают детям
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=blagotvoritelnye-meroprijatija" title="Благотворительные мероприятия">
+                                                Благотворительные мероприятия
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?category=others" title="Другое">
+                                                Другое                </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="filter-wrapper" click.delegate="toggle3()">
+                                    <div class="filter-head link">
+                                        <div class="filter-text" >Тип</div>
+                                        <div class="filter-arrow"></div>
+                                    </div>
+                                    <div class="filter-default">Тип</div>
+                                    <ul class="filter-list ${display3 ? 'active' : ''}" >
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns" title="Все">
+                                                Все                </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?type=private" title="Приватная">
+                                                Приватная
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://super.tabletochki.org/ru/campaigns?type=corporate" title="Корпоративная">
+                                                Корпоративная
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="wrap_platform">
+                                <div class="wrap_item-platform">
+                                    <img src="src/assets/img/compan.png">
+                                    <h3>30 лет - дарит улыбки</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                                </div>
+                                <div class="wrap_item-platform">
+                                    <img src="src/assets/img/compan.png">
+                                    <h3>30 лет - дарит улыбки</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                                </div>
+                                <div class="wrap_item-platform">
+                                    <img src="src/assets/img/compan.png">
+                                    <h3>30 лет - дарит улыбки</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h3>Мы в соц. сетях</h3>
+        <div class="wrap_share">
+            <ul>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</template>

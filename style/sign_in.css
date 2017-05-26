@@ -1,0 +1,104 @@
+.sign_in{
+    max-width: 230px;
+    margin: 0 auto;
+}
+
+.sign_in img{
+
+    display: block;
+    margin: 0 auto;
+    padding-top: 64px;
+}
+.sign_in form{
+    padding-top: 47px;
+}
+.sign_in input{
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    opacity: 0.5;
+    outline: none;
+    color: #063b4f;
+    font-family: PlumbCondensed-Regular;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 11px 10px 11.5px 24px;
+    border: none;
+    border-bottom: 1.5px solid #063b4f;
+}
+.sign_in .forgot_password{
+    color: #063b4f;
+    font-family: PlumbCondensed-Regular;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 35px;
+    text-decoration: underline;
+    text-align: right;
+    display: block;
+    margin-right: 5px;
+}
+.sign_in input[type='submit']{
+    outline: none;
+    color: #ffffff;
+    font-family: PlumbCondensed-Regular;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 20px;
+    border: 1px solid #053344;
+    background-color: #063b4f;
+    opacity: 1;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+.sign_in input[type='submit']:hover,.sign_in input[type='submit']:active {
+    border: 1px solid #d64a1d;
+    background-color: #f15a2a;
+}
+.wrap_registr-anonim a:first-child:hover, .wrap_registr-anonim a:last-child:hover{
+    border: 1px solid #053344;
+    background-color: #063b4f;
+    color: #ffffff;
+}
+.wrap_registr-anonim a{
+    color: #063b4f;
+    font-family: PlumbCondensed-Regular;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 20px;
+    border: 1px solid #063b4f;
+    text-decoration: none;
+    padding-top: 10.5px;
+    padding-bottom: 11.5px;
+    width: 47%;
+    text-align: center;
+}
+.wrap_registr-anonim{
+   padding-top: 20px;
+    margin-bottom: 58px;
+}
+.wrap_registr-anonim a:first-child{
+    float: left;
+}
+.wrap_registr-anonim a:last-child{
+    float: right;
+}
+@media (max-height: 530px) {
+    .sign_in img {
+        padding-top: 44px;
+    }
+    .sign_in form {
+        padding-top: 37px;
+    }
+    .wrap_registr-anonim {
+         margin-bottom: 0;
+    }
+}
+@media (max-height: 500px) {
+    .main-page .anonim {
+        margin-top: 80px!important;
+    }
+}
