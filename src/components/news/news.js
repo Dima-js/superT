@@ -1,34 +1,25 @@
 import {HttpClient, json} from 'aurelia-fetch-client';
 import {inject} from 'aurelia-framework';
+
+//let httpClient = new HttpClient();
 @inject(HttpClient)
-export class Platform {
+export class News {
+
     httpClient;
 
     constructor(httpClient) {
 
         this.httpClient = httpClient;
 
-        this.getData_platform();
-        this.header_name = 'Кампании';
+        this.getData();
     }
-
-    //img_news = "http://tabletapp.nwdev.net/"+ error.image;
-
-
     toggle1() {
         this.display1 = !this.display1;
     }
 
-    toggle2() {
-        this.display2 = !this.display2;
-    }
-
-    toggle3() {
-        this.display3 = !this.display3;
-    }
-
-    getData_platform() {
-        this.httpClient.fetch('http://tabletapp.nwdev.net/api/v1/campaigns')
+    //img_news = "http://tabletapp.nwdev.net/"+ error.image;
+    getData() {
+        this.httpClient.fetch('http://tabletapp.nwdev.net/api/v1/news')
             .then(response => response.json())
             .then(data => {
                 this.myData = data;
@@ -36,9 +27,10 @@ export class Platform {
                 console.log(this.myData);
 
             });
-
     }
+
+
+
+
+
 }
-
-
-

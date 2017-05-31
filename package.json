@@ -10,6 +10,8 @@
   "dependencies": {
     "aurelia-bootstrapper": "^2.1.0",
     "aurelia-animator-css": "^1.0.1",
+    "aurelia-fetch-client": "^1.1.0",
+    "aurelia-http-client": "^1.0.3",
     "bluebird": "^3.4.1",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest"

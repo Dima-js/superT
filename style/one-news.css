@@ -1,0 +1,26 @@
+.wrap_one-news img{
+    display: block;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    width: 100%;
+}
+.wrap_data-news{
+    padding: 15px;
+    color: #063b4f;
+    font-family: MullerLight;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+.prev-page{
+    color: #063b4f;
+    font-family: MullerLight;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 55px;
+    display: block;
+}

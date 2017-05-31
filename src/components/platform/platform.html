@@ -1,16 +1,16 @@
 <template>
     <div class="header">
         <div class="wrapper">
-            <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
-            <div class="caption-page">Кампании</div>
+            <a href="" class=" burger"  id="menu-btn-toggle ${display1 ? 'active' : ''}"  click.delegate="toggle1()" ><span></span></a>
+            <div class="caption-page">${header_name}</div>
             <a  route-href="route: home" class="all-company"></a>
         </div>
     </div>
     <!--<a href="#" id="menu-btn-toggle" class=""></a>-->
-    <div id="overlay" class="${display ? 'active' : ''}" click.delegate="toggle()"> </div>
-    <div id="myPanelDefault" class="${display ? 'active' : ''}"  >
+    <div id="overlay" class="${display1 ? 'active' : ''}" click.delegate="toggle1()"> </div>
+    <div id="myPanelDefault" class="${display1 ? 'active' : ''}"  >
         <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
-            <a href="#" class="close" click.delegate="toggle()"></a>
+            <a href="#" class="close" click.delegate="toggle1()"></a>
             <span class="user_name">Tiffany Henderson</span>
             <li>
                 <a route-href="route: about">Главная страница</a>
@@ -136,22 +136,13 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="wrap_platform">
-                                <div class="wrap_item-platform">
-                                    <img src="src/assets/img/compan.png">
-                                    <h3>30 лет - дарит улыбки</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                                </div>
-                                <div class="wrap_item-platform">
-                                    <img src="src/assets/img/compan.png">
-                                    <h3>30 лет - дарит улыбки</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                                </div>
-                                <div class="wrap_item-platform">
-                                    <img src="src/assets/img/compan.png">
-                                    <h3>30 лет - дарит улыбки</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-                                </div>
+                                <a href="#" class="wrap_item-platform"repeat.for="platforms of myData.data">
+                                    <img src="http://tabletapp.nwdev.net${platforms.image}">
+                                    <h3 innerHTML.bind="platforms.name "></h3>
+                                    <p innerHTML.bind="platforms.target | sanitizeHTML "></p>
+                                </a>
                             </div>
                         </div>
 

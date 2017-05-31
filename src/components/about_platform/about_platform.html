@@ -1,0 +1,67 @@
+<template>
+    <div class="header">
+        <div class="wrapper">
+            <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
+            <div class="caption-page">О нас</div>
+            <a  route-href="route: platform" class="all-company"></a>
+        </div>
+    </div>
+    <div id="overlay" class="${display ? 'active' : ''}" click.delegate="toggle()"> </div>
+    <div id="myPanelDefault" class="${display ? 'active' : ''}"  >
+        <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
+            <a href="#" class="close" click.delegate="toggle()"></a>
+            <span class="user_name">Tiffany Henderson</span>
+            <li>
+                <a route-href="route: index">Главная страница</a>
+            </li>
+            <li>
+                <a route-href="route: about">О нас</a>
+            </li>
+            <li>
+                <a route-href="route: platform">Кампании</a>
+            </li>
+            <li>
+                <a route-href="route: news">Новости платформы</a>
+            </li>
+            <li>
+                <a href="#">Частые вопросы</a>
+            </li>
+            <li>
+                <a class="last_item-menu" route-href="route: index">Выйти</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="wrapper">
+            <div class="top_layout">
+                <div class="wrap__about-platform">
+                    <h1>Новости Платформы</h1>
+                    <div class="slick-slider">
+                        <div>hsdfbsdfb</div>
+                        <div>hsdfbsdfb</div>
+                        <div>hsdfbsdfb</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><div class="footer">
+    <h3>Мы в соц. сетях</h3>
+    <div class="wrap_share">
+        <ul>
+            <li>
+                <a href="#"></a>
+            </li>
+            <li>
+                <a href="#"></a>
+            </li>
+            <li>
+                <a href="#"></a>
+            </li>
+            <li>
+                <a href="#"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</template>

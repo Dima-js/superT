@@ -1,0 +1,77 @@
+<template>
+    <div class="header">
+        <div class="wrapper">
+            <a href="" class=" burger"  id="menu-btn-toggle ${display1 ? 'active' : ''}"  click.delegate="toggle1()" ><span></span></a>
+            <div class="caption-page">${header_name}</div>
+            <a  route-href="route: platform" class="all-company"></a>
+        </div>
+    </div>
+    <!--<a href="#" id="menu-btn-toggle" class=""></a>-->
+    <div id="overlay" class="${display1 ? 'active' : ''}" click.delegate="toggle1()"> </div>
+    <div id="myPanelDefault" class="${display1 ? 'active' : ''}"  >
+        <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
+            <a href="#" class="close" click.delegate="toggle1()"></a>
+            <span class="user_name">Tiffany Henderson</span>
+            <li>
+                <a route-href="route: about">Главная страница</a>
+            </li>
+            <li>
+                <a route-href="route: about">О нас</a>
+            </li>
+            <li>
+                <a href="#">Кампании</a>
+            </li>
+            <li>
+                <a href="#">Новости платформы</a>
+            </li>
+            <li>
+                <a href="#">Частые вопросы</a>
+            </li>
+            <li>
+                <a class="last_item-menu" href="#">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="main">
+        <div class="wrapper">
+            <div class="top_layout">
+                <!--<button click.delegate = "getData()">GET</button>-->
+                <div class="wrap_platform"  >
+                    <!--repeat.for="one_news of myData"-->
+                    <h1 >${myData.data.title}</h1>
+                    <!--innerHTML.bind="one_news.title "-->
+                        <div class="wrapper">
+                            <div class="wrap_one-news">
+                                <img src="http://tabletapp.nwdev.net${myData.data.image}">
+                                <div class="wrap_data-news">
+                                    <p innerHTML.bind="myData.data.content | sanitizeHTML"></p>
+                                </div>
+                                <a route-href="route: news" class="prev-page">Вернуться назад</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="footer">
+        <h3>Мы в соц. сетях</h3>
+        <div class="wrap_share">
+            <ul>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

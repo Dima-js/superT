@@ -1,7 +1,5 @@
-
-export class About {
+export class About_platform {
     toggle() {
         this.display = !this.display;
     }
-
 }
