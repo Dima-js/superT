@@ -13,22 +13,22 @@
             <a href="#" class="close" click.delegate="toggle1()"></a>
             <span class="user_name">Tiffany Henderson</span>
             <li>
-                <a route-href="route: about">Главная страница</a>
+                <a route-href="route: index">Главная страница</a>
             </li>
             <li>
                 <a route-href="route: about">О нас</a>
             </li>
             <li>
-                <a href="#">Кампании</a>
+                <a route-href="route: platform">Кампании</a>
             </li>
             <li>
-                <a href="#">Новости платформы</a>
+                <a route-href="route: news">Новости платформы</a>
             </li>
             <li>
-                <a href="#">Частые вопросы</a>
+                <a route-href="route: faq" >Частые вопросы</a>
             </li>
             <li>
-                <a class="last_item-menu" href="#">Выйти</a>
+                <a class="last_item-menu" route-href="route: index">Выйти</a>
             </li>
         </ul>
     </div>
@@ -41,75 +41,24 @@
                     <h1>Акции и Платформы</h1>
                     <div class="wrapper">
                         <div class="wrap_form">
-                            <form class="form_search">
-                                <input type="text" name="search" class="search">
+                            <div class="form_search">
+                                <input type="text" name="search" class="search" placeholder="Enter filter text" value.bind="filters[0].value">
                                 <button type="submit" ></button>
-                            </form>
+                            </div>
                         </div>
                         <div class="wrapper">
-                            <span class="description-text">Lorem ipsum dolor sit amet, consect</span>
+                            <span class="description-text">Поиск по ключевому слову</span>
                             <div class="donate-filters">
                                 <div class="filter-wrapper" click.delegate="toggle2()">
                                     <div class="filter-head link">
                                         <div class="filter-text" >Категория</div>
                                         <div class="filter-arrow"></div>
                                     </div>
-                                    <div class="filter-default">Категория</div>
-                                    <ul class="filter-list ${display2 ? 'active' : ''} ">
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns" title="Все">
-                                                Все                </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=blagotvoritelnost-vmesto-suvenirov" title="Благотворительность вместо сувениров">
-                                                Благотворительность вместо сувениров
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=odin-den-dlja-detej" title="Один день для детей">
-                                                Один день для детей
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=ofisnye-jarmarki" title="Офисные ярмарки">
-                                                Офисные ярмарки
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=sorevnovaniya-i-razvlecheniya" title="Соревнования и развлечения">
-                                                Соревнования и развлечения
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=lichnye-prazdniki" title="Личные праздники">
-                                                Личные праздники
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=jarmarki-i-rasprodazhi" title="Ярмарки и распродажи">
-                                                Ярмарки и распродажи
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=dlya-tvorcheskikh-lyudey" title="Для творческих людей">
-                                                Для творческих людей
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=deti-pomogayut-detyam" title="Дети помогают детям">
-                                                Дети помогают детям
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=blagotvoritelnye-meroprijatija" title="Благотворительные мероприятия">
-                                                Благотворительные мероприятия
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="http://super.tabletochki.org/ru/campaigns?category=others" title="Другое">
-                                                Другое                </a>
-                                        </li>
-                                    </ul>
+                                    <select class="filter-list ${display2 ? 'active' : ''} " value.bind="filters[1].value">
+                                        <option repeat.for="category1 of eyeColors" model.bind="category1">
+                                                ${category1}
+                                        </option>
+                                    </select>
                                 </div>
 
                                 <div class="filter-wrapper" click.delegate="toggle3()">
@@ -137,8 +86,9 @@
                                 </div>
                             </div>
 
-                            <div class="wrap_platform">
-                                <a href="#" class="wrap_item-platform"repeat.for="platforms of myData.data">
+                            <div class="wrap_platform" aurelia-table="data.bind: list; display-data.bind: $displayData; filters.bind: filters">
+                                <a href="#" class="wrap_item-platform" repeat.for="platforms of $displayData"   >
+
                                     <img src="http://tabletapp.nwdev.net${platforms.image}">
                                     <h3 innerHTML.bind="platforms.name "></h3>
                                     <p innerHTML.bind="platforms.target | sanitizeHTML "></p>

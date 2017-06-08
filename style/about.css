@@ -11,7 +11,7 @@
     z-index: 100;
     box-sizing: border-box;
     /*padding: 50px 20px 0 25px;*/
-    transition: all .4s linear;
+    transition: all .3s linear;
 
 }
 #myPanelDefault ul li a span:hover {
@@ -164,6 +164,13 @@ nav ul li a {
 }
 .style_menu .last_item-menu{
     border-bottom: 1px solid #cacaca;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #063b4f!important;
+}
+.swiper-container{
+    min-height: 260px;
 }
 @media (max-width: 349px) {
     .work_item p {

@@ -2,6 +2,7 @@
     max-width:90%;
     margin: 0 auto;
     margin-top: 20px;
+
 }
 .news{
     padding: 17px 15px;
@@ -35,5 +36,7 @@
     overflow-x: hidden;
 }
 .news img{
-    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
 }

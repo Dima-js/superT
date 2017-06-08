@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-    $('.autoplay').slick({
-        arrows:false,
-        dots: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        loop:true
-    });
     var $menu = $('#myPanelDefault');
     var $m=$('#overlay');
     $('#menu-btn-toggle').click(function(event){
@@ -19,5 +10,27 @@ $(document).ready(function(){
         $m.toggleClass('active');
 
     });
+    $('.faq-item>div').click(function(event) {
+        alert('++');
+        event.preventDefault();
+        $(this).toggleClass('active');
+    });
 
 });
+
+//$('#mail').on('submit', function(e){
+//    e.preventDefault();
+//            console.log('qeqeq');
+//    $.ajax({
+//        url: apiUrl + 'http://tabletapp.nwdev.net/api/v1/feedback',
+//        type: "POST",
+//        dataType: 'json',
+//        data:{
+//            fio: $(this).find('input[name=fio]').val(),
+//            email: $(this).find('input[name=email]').val(),
+//            message: $(this).find('textarea[name=message]').val()
+//        }
+//    }).done(function(response){
+//        console.log(response);
+//    })
+//})

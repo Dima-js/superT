@@ -29,8 +29,10 @@ export class News {
             });
     }
 
-
-
+    //exitFromApp()
+    //    {
+    //        navigator.app.exitApp();
+    //    }
 
 
 }

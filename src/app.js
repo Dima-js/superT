@@ -5,7 +5,28 @@ export class App {
     config.title = 'SuperT';
     config.map([
       {
-        route: ['','about_platform'],
+        route: ['index'],
+        name: 'index',
+        moduleId: './components/index/index',
+        nav: true,
+        title:'Index'
+      },
+      {
+        route: ['faq'],
+        name: 'faq',
+        moduleId: './components/faq/faq',
+        nav: true,
+        title:'faq'
+      },
+      {
+        route: ['','home'],
+        name: 'home',
+        moduleId: './components/home/home',
+        nav: true,
+        title:'home'
+      },
+      {
+        route: ['about_platform'],
         name: 'about_platform',
         moduleId: './components/about_platform/about_platform',
         nav: true,
@@ -32,13 +53,7 @@ export class App {
         nav: true,
         title:'Post_data'
       },
-      {
-        route: ['index'],
-        name: 'index',
-        moduleId: './components/index/index',
-        nav: true,
-        title:'Index'
-      },
+
       {
         route: ['platform'],
         name: 'platform',

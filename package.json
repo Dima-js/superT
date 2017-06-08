@@ -8,12 +8,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aurelia-bootstrapper": "^2.1.0",
+    "au-table": "^0.1.12",
     "aurelia-animator-css": "^1.0.1",
+    "aurelia-bootstrapper": "^2.1.0",
     "aurelia-fetch-client": "^1.1.0",
     "aurelia-http-client": "^1.0.3",
+    "aurelia-infinite-scroll-plugin": "^0.1.5",
     "bluebird": "^3.4.1",
     "requirejs": "^2.3.2",
+    "swiper": "^3.4.1",
     "text": "github:requirejs/text#latest"
   },
   "peerDependencies": {},

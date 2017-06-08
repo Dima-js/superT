@@ -6,6 +6,9 @@
     color: #063b4f;
     text-transform: uppercase;
 }
+.wrap_platform{
+    min-height:100vh;
+}
 .wrap_form{
     text-align: center;
     padding-top: 24px;

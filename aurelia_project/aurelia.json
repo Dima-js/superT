@@ -126,6 +126,14 @@
             "main": "aurelia-templating-resources"
           },
           {
+            "name": "aurelia-table",
+            "path": "../node_modules/au-table/dist/amd",
+            "main": "index",
+            "resources": [
+              "au-table-pagination.html"
+            ]
+          },
+          {
             "name": "aurelia-templating-router",
             "path": "../node_modules/aurelia-templating-router/dist/amd",
             "main": "aurelia-templating-router"
@@ -140,6 +148,22 @@
             "name": "aurelia-fetch-client",
             "path": "../node_modules/aurelia-fetch-client/dist/amd",
             "main": "aurelia-fetch-client"
+          },
+          "jquery",
+          {
+            "name": "swiper",
+            "path": "../node_modules/swiper/dist",
+            "main": "js/swiper.min",
+            "resources": [
+              "css/swiper.min.css"
+            ]
+          },
+          "extend",
+          {
+            "name": "aurelia-infinite-scroll-plugin",
+            "path": "../node_modules/aurelia-infinite-scroll-plugin/dist/amd",
+            "main": "aurelia-infinite-scroll-plugin",
+            "resources": []
           }
 
         ]

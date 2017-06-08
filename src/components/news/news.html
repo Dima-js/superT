@@ -19,16 +19,16 @@
                 <a route-href="route: about">О нас</a>
             </li>
             <li>
-                <a href="#">Кампании</a>
+                <a route-href="route: platform">Кампании</a>
             </li>
             <li>
-                <a href="#">Новости платформы</a>
+                <a route-href="route: news">Новости платформы</a>
             </li>
             <li>
-                <a href="#">Частые вопросы</a>
+                <a route-href="route: faq">Частые вопросы</a>
             </li>
             <li>
-                <a class="last_item-menu" href="#">Выйти</a>
+                <a href="#" class="last_item-menu"  >Выйти</a>
             </li>
         </ul>
     </div>
@@ -38,8 +38,9 @@
                 <div class="wrap_platform">
                     <h1>Новости Платформы</h1>
                     <!--<button click.delegate = "getData()">GET</button>-->
-                    <div class="wrapper">
-                        <div class="wrap_news" repeat.for="news of myData.data" >
+                    <div class="wrapper" >
+                        <!--<div class="wrap_news" repeat.for="news of myData.data" >-->
+                        <div class="wrap_news" repeat.for="news of myData.data" infinite-scroll="callback.call: getData(); scroll-buffer: 250; is-active: true" >
                             <a route-href="route: one_news; params.bind: {id:news.id}" class="news">
                                 <img src= "http://tabletapp.nwdev.net${news.image}">
                                 <h3 class="caption-news" innerHTML.bind="news.title "></h3>

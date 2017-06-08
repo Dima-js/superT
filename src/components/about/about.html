@@ -1,5 +1,5 @@
 <template>
-
+    <require from="swiper/css/swiper.min.css"></require>
     <div class="header">
         <div class="wrapper">
             <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
@@ -26,7 +26,7 @@
                 <a route-href="route: news">Новости платформы</a>
             </li>
             <li>
-                <a href="#">Частые вопросы</a>
+                <a route-href="route: faq" >Частые вопросы</a>
             </li>
             <li>
                 <a class="last_item-menu" route-href="route: index">Выйти</a>
@@ -52,25 +52,41 @@
                         <div class="wrap_slider-what_maney">
                             <h3>на что нужны деньги</h3>
                             <div class="autoplay">
-                                <div>
-                                    <div class="wrap_slide">
-                                        <img src="src/assets/img/slaid1.png">
-                                        <img src="">
-                                        <span>1 000 гривен</span>
+                                <div class="swiper-container">
+                                    <!-- Additional required wrapper -->
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
+                                        <div class="swiper-slide">
+                                            <div class="wrap_slide">
+                                                <img src="src/assets/img/slaid1.png">
+                                                <img src="">
+                                                <span>1 000 гривен</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="wrap_slide">
+                                                <img src="src/assets/img/slaid1.png">
+                                                <span>1 001 гривен</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="wrap_slide">
+                                                <img src="src/assets/img/slaid1.png">
+                                                <span>1 002 гривен</span>
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <!-- If we need pagination -->
+                                    <div class="tariffs-gallery__pagination swiper-pagination"></div>
+
+                                    <!-- If we need navigation buttons -->
+                                    <!--<div class="swiper-button-prev"></div>-->
+                                    <!--<div class="swiper-button-next"></div>-->
+
                                 </div>
-                                <div>
-                                    <div class="wrap_slide">
-                                        <img src="src/assets/img/slaid1.png">
-                                        <span>1 001 гривен</span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="wrap_slide">
-                                        <img src="src/assets/img/slaid1.png">
-                                        <span>1 002 гривен</span>
-                                    </div>
-                                </div>
+
+
                             </div>
                         </div>
                         <a href="#" class="btn-help">Помочь сейчас!</a>

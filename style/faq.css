@@ -1,0 +1,172 @@
+.wrap_about-us{
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+.faq-item {
+    margin-bottom: 20px;
+}
+.wrap_faq{
+    margin-top: 40px;
+}
+
+/*    */
+
+.accordion {
+    border-top: 1px solid #e3e6e8;
+    border-bottom: 1px solid #e3e6e8;
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.accordion-item {
+    position: relative;
+    border-bottom: 1px solid #e3e6e8;
+
+}
+.accordion-item-head {
+    position: relative;
+    border-bottom: 1px solid transparent;
+    background-color: #f7f8fb;
+    transition: all .4s;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.accordion-item.active .accordion-item-head {
+    border-bottom: 1px solid #e3e6e8;
+}
+.accordion-item-head:hover, .accordion-item-head:active {
+    background-color: #eff0f3;
+}
+.accordion-item-head {
+    position: relative;
+    border-bottom: 1px solid transparent;
+    background-color: #063b4f;
+    transition: all .4s;
+    cursor: pointer;
+}
+.accordion-title {
+    position: relative;
+    display: block;
+    padding: 12px 62px 10px 32px;
+    font-size: 14px;
+    font-family: MullerRegular;
+    line-height: 16px;
+    color: #f7f8fb;
+    text-decoration: none;
+    transition: all .4s;
+}
+
+.accordion-item.active .accordion-title {
+    color: rgb(144, 213, 224);
+}
+.accordion-toggler {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    display: block;
+    width: 17px;
+    height: 17px;
+    margin-top: -9px;
+    background: #839ea8 url(../src/assets/img/plus.png) no-repeat 50% 50%;
+    transition: all .4s;
+}
+.accordion-item-head:hover, .accordion-item-head:active {
+    background-color: #053344;
+}
+.accordion-item.active .accordion-toggler {
+    background: #839ea8 url(../src/assets/img/minus.png) no-repeat 50% 50%;
+}
+.accordion-item-body {
+    max-height: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    padding: 0 32px;
+    font-size: 16px;
+    background-color: rgb(144, 213, 224);
+}
+.accordion-item.active .accordion-item-body {
+    max-height: 1000px;
+    transition-timing-function: ease-in;
+    /*padding: 15px 20px;*/
+}
+.accordion-item-body p {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-family: MullerLight;
+    font-size: 14px;
+}
+
+.wrap_form-massage h5{
+    font-size: 15px;
+    font-size: 1rem;
+    line-height: 17px;
+    font-weight: 500;
+    font-family: MullerRegular;
+    padding: 0 15px 0 0px;
+    color: #063b4f;
+    padding-top: 10px;
+    margin: 0;
+}
+.faq-form{
+    position: relative;
+    margin-bottom: 50px;
+}
+.faq-form input {
+    width: 100%;
+    margin-top: 15px;
+    padding: 0 15px;
+    color: #063b4f;
+    line-height: 34px;
+    padding: 0 25px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 18px;
+    border: 1px solid #e1e1e1;
+    outline: 0!important;
+
+}
+.faq-form textarea {
+    min-height: 100px;
+    margin-top: 15px;
+    padding: 5px 15px;
+    width: 100%;
+    min-height: 145px;
+    padding: 5px;
+    font-size: 13px;
+    line-height: 16px;
+    font-size: .86667rem;
+    font-family: MullerRegular;
+    color: #063b4f;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid #e1e1e1;
+    resize: vertical;
+    outline: 0!important;
+}
+
+.faq-form input[type='submit'] {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    padding: 0 50px;
+    color: #fff;
+    background-color: #063b4f;
+    line-height: 36px;
+    font-family: plumb-R;
+    font-size: 13px!important;
+    font-size: 1.46667rem;
+    border-radius: 24px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    width: 50%;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    transition: all .4s;
+    cursor: pointer;
+    outline: 0!important;
+}

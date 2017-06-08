@@ -13,22 +13,22 @@
             <a href="#" class="close" click.delegate="toggle1()"></a>
             <span class="user_name">Tiffany Henderson</span>
             <li>
-                <a route-href="route: about">Главная страница</a>
+                <a route-href="route: index">Главная страница</a>
             </li>
             <li>
                 <a route-href="route: about">О нас</a>
             </li>
             <li>
-                <a href="#">Кампании</a>
+                <a route-href="route: platform">Кампании</a>
             </li>
             <li>
-                <a href="#">Новости платформы</a>
+                <a route-href="route: news">Новости платформы</a>
             </li>
             <li>
-                <a href="#">Частые вопросы</a>
+                <a route-href="route: faq" >Частые вопросы</a>
             </li>
             <li>
-                <a class="last_item-menu" href="#">Выйти</a>
+                <a class="last_item-menu" route-href="route: index">Выйти</a>
             </li>
         </ul>
     </div>
@@ -38,7 +38,7 @@
         <div class="wrapper">
             <div class="top_layout">
                 <!--<button click.delegate = "getData()">GET</button>-->
-                <div class="wrap_platform"  >
+                <div class="wrap_platform"   >
                     <!--repeat.for="one_news of myData"-->
                     <h1 >${myData.data.title}</h1>
                     <!--innerHTML.bind="one_news.title "-->

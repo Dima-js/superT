@@ -1,4 +1,6 @@
 <template>
+    <require from="swiper/css/swiper.min.css"></require>
+
     <div class="header">
         <div class="wrapper">
             <a href="#" class=" burger"  id="menu-btn-toggle ${display ? 'active' : ''}"  click.delegate="toggle()" ><span></span></a>
@@ -24,7 +26,7 @@
                 <a route-href="route: news">Новости платформы</a>
             </li>
             <li>
-                <a href="#">Частые вопросы</a>
+                <a route-href="route: faq">Частые вопросы</a>
             </li>
             <li>
                 <a class="last_item-menu" route-href="route: index">Выйти</a>
@@ -36,10 +38,25 @@
             <div class="top_layout">
                 <div class="wrap__about-platform">
                     <h1>Новости Платформы</h1>
-                    <div class="slick-slider">
-                        <div>hsdfbsdfb</div>
-                        <div>hsdfbsdfb</div>
-                        <div>hsdfbsdfb</div>
+                    <div class="swiper-container">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
+                        <div class="swiper-scrollbar"></div>
                     </div>
                 </div>
             </div>
