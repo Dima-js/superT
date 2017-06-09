@@ -19,12 +19,19 @@ export class App {
         title:'faq'
       },
       {
-        route: ['','home'],
-        name: 'home',
-        moduleId: './components/home/home',
+        route: ['','one_platform/'],
+        name: 'one_platform',
+        moduleId: './components/one_platform/one_platform',
         nav: true,
-        title:'home'
+        title:'one_platform'
       },
+      //{
+      //  route: ['','home'],
+      //  name: 'home',
+      //  moduleId: './components/home/home',
+      //  nav: true,
+      //  title:'home'
+      //},
       {
         route: ['about_platform'],
         name: 'about_platform',

@@ -31,11 +31,11 @@ define('app',['exports'], function (exports) {
         nav: true,
         title: 'faq'
       }, {
-        route: ['', 'home'],
-        name: 'home',
-        moduleId: './components/home/home',
+        route: ['', 'one_platform/'],
+        name: 'one_platform',
+        moduleId: './components/one_platform/one_platform',
         nav: true,
-        title: 'home'
+        title: 'one_platform'
       }, {
         route: ['about_platform'],
         name: 'about_platform',
@@ -5061,7 +5061,7 @@ define(['module', 'exports', 'jquery'], function (module, exports) {
         };
     });
 });
-define('components/about/about',['exports', 'jquery', 'swiper'], function (exports, _jquery) {
+define('components/about/about',['exports', 'jquery', 'aurelia-fetch-client', 'aurelia-framework', 'swiper'], function (exports, _jquery, _aureliaFetchClient, _aureliaFramework) {
     'use strict';
 
     Object.defineProperty(exports, "__esModule", {
@@ -5083,20 +5083,37 @@ define('components/about/about',['exports', 'jquery', 'swiper'], function (expor
         }
     }
 
-    var About = exports.About = function () {
+    var _dec, _class;
+
+    var About = exports.About = (_dec = (0, _aureliaFramework.inject)(_aureliaFetchClient.HttpClient), _dec(_class = function () {
         About.prototype.toggle = function toggle() {
             this.display = !this.display;
         };
 
-        function About() {
+        function About(httpClient) {
             _classCallCheck(this, About);
+
+            this.httpClient = httpClient;
 
             this.id = null;
             this.value = null;
             this.active = null;
 
             this.swiper = new Swiper();
+            this.getData();
         }
+
+        About.prototype.getData = function getData() {
+            var _this = this;
+
+            this.httpClient.fetch(' http://tabletapp.nwdev.net/api/v1/banners').then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.myData = data;
+                _this.list = _this.myData.data[2].items;
+                console.log(_this.list);
+            });
+        };
 
         About.prototype.attached = function attached() {
             var objSwiper;
@@ -5123,7 +5140,7 @@ define('components/about/about',['exports', 'jquery', 'swiper'], function (expor
         };
 
         return About;
-    }();
+    }()) || _class);
 });
 define('components/about_platform/about_platform',["exports"], function (exports) {
     "use strict";
@@ -5298,6 +5315,7 @@ define('components/home/home',['exports', 'aurelia-fetch-client'], function (exp
                 return response.json();
             }).then(function (data) {
                 _this.list = data.data;
+                console.log(_this.list);
             }).then(function () {
                 return _this.populateColors();
             });
@@ -5434,6 +5452,144 @@ define('components/one_news/one_news',['exports', 'aurelia-fetch-client', 'aurel
 
         return One_news;
     }()) || _class);
+});
+define('components/one_platform/one_platform',['exports', 'jquery', 'aurelia-fetch-client', 'aurelia-framework', 'swiper'], function (exports, _jquery, _aureliaFetchClient, _aureliaFramework) {
+    'use strict';
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    exports.One_platform = undefined;
+
+    var _jquery2 = _interopRequireDefault(_jquery);
+
+    function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : {
+            default: obj
+        };
+    }
+
+    function _initDefineProp(target, property, descriptor, context) {
+        if (!descriptor) return;
+        Object.defineProperty(target, property, {
+            enumerable: descriptor.enumerable,
+            configurable: descriptor.configurable,
+            writable: descriptor.writable,
+            value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+        });
+    }
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+        var desc = {};
+        Object['ke' + 'ys'](descriptor).forEach(function (key) {
+            desc[key] = descriptor[key];
+        });
+        desc.enumerable = !!desc.enumerable;
+        desc.configurable = !!desc.configurable;
+
+        if ('value' in desc || desc.initializer) {
+            desc.writable = true;
+        }
+
+        desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+            return decorator(target, property, desc) || desc;
+        }, desc);
+
+        if (context && desc.initializer !== void 0) {
+            desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+            desc.initializer = undefined;
+        }
+
+        if (desc.initializer === void 0) {
+            Object['define' + 'Property'](target, property, desc);
+            desc = null;
+        }
+
+        return desc;
+    }
+
+    function _initializerWarningHelper(descriptor, context) {
+        throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+    }
+
+    var _dec, _dec2, _class, _desc, _value, _class2, _descriptor;
+
+    var One_platform = exports.One_platform = (_dec = (0, _aureliaFramework.inject)(_aureliaFetchClient.HttpClient), _dec2 = (0, _aureliaFramework.bindable)({ defaultBindingMode: _aureliaFramework.bindingMode.oneWay }), _dec(_class = (_class2 = function () {
+        function One_platform(http) {
+            _classCallCheck(this, One_platform);
+
+            this.username = '';
+            this.sum_many = '';
+            this.coment = '';
+
+            _initDefineProp(this, 'list', _descriptor, this);
+
+            this.swiper = new Swiper();
+            http.configure(function (config) {
+                config.useStandardConfiguration().withBaseUrl('http://tabletapp.nwdev.net/api/v1/');
+            });
+
+            this.http = http;
+        }
+
+        One_platform.prototype.toggle = function toggle() {
+            this.display = !this.display;
+        };
+
+        One_platform.prototype.attached = function attached() {
+            var objSwiper;
+
+            objSwiper = this.initSwiper();
+        };
+
+        One_platform.prototype.initSwiper = function initSwiper() {
+
+            var swiper = new Swiper('.swiper-container', {
+                slideClass: 'swiper-slide',
+                wrapperClass: 'swiper-wrapper',
+                initialSlide: 3,
+                slidesPerView: 3,
+
+                loop: true,
+                centeredSlides: true,
+                spaceBetween: 30
+
+            });
+            return swiper;
+        };
+
+        One_platform.prototype.postData = function postData() {
+            var myPostData = { username: this.username, sum_many: this.sum_many, coment: this.coment };
+            console.log(myPostData);
+            return this.httpClient.fetch('http://tabletapp.nwdev.net/api/v1/campaigns', {
+                method: 'post',
+                body: (0, _aureliaFetchClient.json)(myPostData)
+            });
+        };
+
+        One_platform.prototype.activate = function activate(params) {
+            var _this = this;
+
+            return this.http.fetch('campaigns/' + params.id).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                _this.list = data.data.invoices;
+
+                console.log(_this.list);
+            });
+        };
+
+        return One_platform;
+    }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'list', [_dec2], {
+        enumerable: true,
+        initializer: null
+    })), _class2)) || _class);
 });
 define('components/platform/platform',['exports', 'aurelia-fetch-client', 'aurelia-framework'], function (exports, _aureliaFetchClient, _aureliaFramework) {
     'use strict';
@@ -5617,7 +5773,7 @@ define('text!app.html', ['module'], function(module) { module.exports = "<templa
 define('text!assets/slick/slick-theme.css', ['module'], function(module) { module.exports = "@charset 'UTF-8';\n/* Slider */\n.slick-loading .slick-list\n{\n    background: #fff url('ajax-loader.gif') center center no-repeat;\n}\n\n/* Icons */\n@font-face\n{\n    font-family: 'slick';\n    font-weight: normal;\n    font-style: normal;\n\n    src: url('fonts/slick.eot');\n    src: url('fonts/slick.eot?#iefix') format('embedded-opentype'), url('fonts/slick.woff') format('woff'), url('fonts/slick.ttf') format('truetype'), url('fonts/slick.svg#slick') format('svg');\n}\n/* Arrows */\n.slick-prev,\n.slick-next\n{\n    font-size: 0;\n    line-height: 0;\n\n    position: absolute;\n    top: 50%;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 0;\n    -webkit-transform: translate(0, -50%);\n    -ms-transform: translate(0, -50%);\n    transform: translate(0, -50%);\n\n    cursor: pointer;\n\n    color: transparent;\n    border: none;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover,\n.slick-prev:focus,\n.slick-next:hover,\n.slick-next:focus\n{\n    color: transparent;\n    outline: none;\n    background: transparent;\n}\n.slick-prev:hover:before,\n.slick-prev:focus:before,\n.slick-next:hover:before,\n.slick-next:focus:before\n{\n    opacity: 1;\n}\n.slick-prev.slick-disabled:before,\n.slick-next.slick-disabled:before\n{\n    opacity: .25;\n}\n\n.slick-prev:before,\n.slick-next:before\n{\n    font-family: 'slick';\n    font-size: 20px;\n    line-height: 1;\n\n    opacity: .75;\n    color: white;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n\n.slick-prev\n{\n    left: -25px;\n}\n[dir='rtl'] .slick-prev\n{\n    right: -25px;\n    left: auto;\n}\n.slick-prev:before\n{\n    content: '←';\n}\n[dir='rtl'] .slick-prev:before\n{\n    content: '→';\n}\n\n.slick-next\n{\n    right: -25px;\n}\n[dir='rtl'] .slick-next\n{\n    right: auto;\n    left: -25px;\n}\n.slick-next:before\n{\n    content: '→';\n}\n[dir='rtl'] .slick-next:before\n{\n    content: '←';\n}\n\n/* Dots */\n.slick-dotted.slick-slider\n{\n    margin-bottom: 30px;\n}\n\n.slick-dots\n{\n    position: absolute;\n    bottom: -25px;\n\n    display: block;\n\n    width: 100%;\n    padding: 0;\n    margin: 0;\n\n    list-style: none;\n\n    text-align: center;\n}\n.slick-dots li\n{\n    position: relative;\n\n    display: inline-block;\n\n    width: 20px;\n    height: 20px;\n    margin: 0 5px;\n    padding: 0;\n\n    cursor: pointer;\n}\n.slick-dots li button\n{\n    font-size: 0;\n    line-height: 0;\n\n    display: block;\n\n    width: 20px;\n    height: 20px;\n    padding: 5px;\n\n    cursor: pointer;\n\n    color: transparent;\n    border: 0;\n    outline: none;\n    background: transparent;\n}\n.slick-dots li button:hover,\n.slick-dots li button:focus\n{\n    outline: none;\n}\n.slick-dots li button:hover:before,\n.slick-dots li button:focus:before\n{\n    opacity: 1;\n}\n.slick-dots li button:before\n{\n    font-family: 'slick';\n    font-size: 6px;\n    line-height: 20px;\n\n    position: absolute;\n    top: 0;\n    left: 0;\n\n    width: 20px;\n    height: 20px;\n\n    content: '•';\n    text-align: center;\n\n    opacity: .25;\n    color: black;\n\n    -webkit-font-smoothing: antialiased;\n    -moz-osx-font-smoothing: grayscale;\n}\n.slick-dots li.slick-active button:before\n{\n    opacity: .75;\n    color: black;\n}\n"; });
 define('text!components/add.html', ['module'], function(module) { module.exports = "<template><p>${data}</p></template>"; });
 define('text!assets/slick/slick.css', ['module'], function(module) { module.exports = "/* Slider */\n.slick-slider\n{\n    position: relative;\n\n    display: block;\n    box-sizing: border-box;\n\n    -webkit-user-select: none;\n       -moz-user-select: none;\n        -ms-user-select: none;\n            user-select: none;\n\n    -webkit-touch-callout: none;\n    -khtml-user-select: none;\n    -ms-touch-action: pan-y;\n        touch-action: pan-y;\n    -webkit-tap-highlight-color: transparent;\n}\n\n.slick-list\n{\n    position: relative;\n\n    display: block;\n    overflow: hidden;\n\n    margin: 0;\n    padding: 0;\n}\n.slick-list:focus\n{\n    outline: none;\n}\n.slick-list.dragging\n{\n    cursor: pointer;\n    cursor: hand;\n}\n\n.slick-slider .slick-track,\n.slick-slider .slick-list\n{\n    -webkit-transform: translate3d(0, 0, 0);\n       -moz-transform: translate3d(0, 0, 0);\n        -ms-transform: translate3d(0, 0, 0);\n         -o-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n}\n\n.slick-track\n{\n    position: relative;\n    top: 0;\n    left: 0;\n\n    display: block;\n}\n.slick-track:before,\n.slick-track:after\n{\n    display: table;\n\n    content: '';\n}\n.slick-track:after\n{\n    clear: both;\n}\n.slick-loading .slick-track\n{\n    visibility: hidden;\n}\n\n.slick-slide\n{\n    display: none;\n    float: left;\n\n    height: 100%;\n    min-height: 1px;\n}\n[dir='rtl'] .slick-slide\n{\n    float: right;\n}\n.slick-slide img\n{\n    display: block;\n}\n.slick-slide.slick-loading img\n{\n    display: none;\n}\n.slick-slide.dragging img\n{\n    pointer-events: none;\n}\n.slick-initialized .slick-slide\n{\n    display: block;\n}\n.slick-loading .slick-slide\n{\n    visibility: hidden;\n}\n.slick-vertical .slick-slide\n{\n    display: block;\n\n    height: auto;\n\n    border: 1px solid transparent;\n}\n.slick-arrow.slick-hidden {\n    display: none;\n}\n"; });
-define('text!components/about/about.html', ['module'], function(module) { module.exports = "<template><require from=\"swiper/css/swiper.min.css\"></require><div class=\"header\"><div class=\"wrapper\"><a href=\"#\" class=\"burger\" id=\"menu-btn-toggle ${display ? 'active' : ''}\" click.delegate=\"toggle()\"><span></span></a><div class=\"caption-page\">О нас</div><a route-href=\"route: platform\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display ? 'active' : ''}\" click.delegate=\"toggle()\"></div><div id=\"myPanelDefault\" class=\"${display ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_about-us\"><h1>о платформе</h1><div class=\"wrapper\"><p class=\"more_about-us\">Таблеточки создали SuperTeam в 2016 году для фандрайзинговых кампаний в пользу своих подопечных.</p><p class=\"more_about-us\">Собирать деньги на SuperTeam может каждый желающий, все, что для этого нужно – выбрать свой формат кампании и зарегистрироваться на сайте.</p><p class=\"more_about-us\">Все кампании на этом сайте надежны и проверены фондом, а пожертвования автоматически поступают на наш счет. Собранные деньги мы тратим исключительно на проекты Таблеточек. Присоединяйтесь к нашей суперкоманде прямо сейчас, давайте менять мир вместе.</p><div class=\"wrap_slider-what_maney\"><h3>на что нужны деньги</h3><div class=\"autoplay\"><div class=\"swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><div class=\"wrap_slide\"><img src=\"src/assets/img/slaid1.png\"> <img src=\"\"> <span>1 000 гривен</span></div></div><div class=\"swiper-slide\"><div class=\"wrap_slide\"><img src=\"src/assets/img/slaid1.png\"> <span>1 001 гривен</span></div></div><div class=\"swiper-slide\"><div class=\"wrap_slide\"><img src=\"src/assets/img/slaid1.png\"> <span>1 002 гривен</span></div></div></div><div class=\"tariffs-gallery__pagination swiper-pagination\"></div></div></div></div><a href=\"#\" class=\"btn-help\">Помочь сейчас!</a><div class=\"how_this_work\"><h3>как это работает</h3><div class=\"work_item clearfix\"><div class=\"number_work\">1</div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p></div><div class=\"work_item clearfix\"><div class=\"number_work\">2</div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p></div><div class=\"work_item clearfix\"><div class=\"number_work\">3</div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p></div></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
+define('text!components/about/about.html', ['module'], function(module) { module.exports = "<template><require from=\"swiper/css/swiper.min.css\"></require><div class=\"header\"><div class=\"wrapper\"><a href=\"#\" class=\"burger\" id=\"menu-btn-toggle ${display ? 'active' : ''}\" click.delegate=\"toggle()\"><span></span></a><div class=\"caption-page\">О нас</div><a route-href=\"route: platform\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display ? 'active' : ''}\" click.delegate=\"toggle()\"></div><div id=\"myPanelDefault\" class=\"${display ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_about-us\"><h1>о платформе</h1><div class=\"wrapper\"><p class=\"more_about-us\">Таблеточки создали SuperTeam в 2016 году для фандрайзинговых кампаний в пользу своих подопечных.</p><p class=\"more_about-us\">Собирать деньги на SuperTeam может каждый желающий, все, что для этого нужно – выбрать свой формат кампании и зарегистрироваться на сайте.</p><p class=\"more_about-us\">Все кампании на этом сайте надежны и проверены фондом, а пожертвования автоматически поступают на наш счет. Собранные деньги мы тратим исключительно на проекты Таблеточек. Присоединяйтесь к нашей суперкоманде прямо сейчас, давайте менять мир вместе.</p><div class=\"wrap_slider-what_maney\"><h3>на что нужны деньги</h3><div class=\"autoplay\"><div class=\"swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\" repeat.for=\"platforms of list\"><div class=\"wrap_slide\"><img src=\"http://tabletapp.nwdev.net${platforms.image}\"> <span innerhtml.bind=\"platforms.title \"></span><p innerhtml.bind=\"platforms.text \"></p></div></div></div><div class=\"tariffs-gallery__pagination swiper-pagination\"></div></div></div></div><a href=\"#\" class=\"btn-help\">Помочь сейчас!</a><div class=\"how_this_work\"><h3>как это работает</h3><div class=\"work_item clearfix\"><div class=\"number_work\">1</div><p>ДЛЯ СЕБЯ И ДЛЯ ДРУЗЕЙ Подарки на день рождения, благотворительные забеги, ярмарки и распродажи. Выберите свой формат кампании, регистрируйтесь на сайте и собирайте друзей</p></div><div class=\"work_item clearfix\"><div class=\"number_work\">2</div><p>ДЛЯ ОФИСА И ДЛЯ КОЛЛЕГ Ярмарки, распродажи, корпоративы и отказ от сувениров. Выберите удобный формат акции для офиса, коллег и партнеров, и регистрируйтесь на сайте</p></div><div class=\"work_item clearfix\"><div class=\"number_work\">3</div><p>Выберите акцию, которую хотите поддержать</p></div></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
 define('text!components/about_platform/about_platform.html', ['module'], function(module) { module.exports = "<template><require from=\"swiper/css/swiper.min.css\"></require><div class=\"header\"><div class=\"wrapper\"><a href=\"#\" class=\"burger\" id=\"menu-btn-toggle ${display ? 'active' : ''}\" click.delegate=\"toggle()\"><span></span></a><div class=\"caption-page\">О нас</div><a route-href=\"route: platform\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display ? 'active' : ''}\" click.delegate=\"toggle()\"></div><div id=\"myPanelDefault\" class=\"${display ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap__about-platform\"><h1>Новости Платформы</h1><div class=\"swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\">Slide 1</div><div class=\"swiper-slide\">Slide 2</div><div class=\"swiper-slide\">Slide 3</div><div class=\"swiper-slide\">Slide 4</div></div><div class=\"swiper-pagination\"></div><div class=\"swiper-button-prev\"></div><div class=\"swiper-button-next\"></div><div class=\"swiper-scrollbar\"></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
 define('text!components/faq/faq.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"#\" class=\"burger\" id=\"menu-btn-toggle ${display ? 'active' : ''}\" click.delegate=\"toggle()\"><span></span></a><div class=\"caption-page\">faq</div><a route-href=\"route: platform\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display ? 'active' : ''}\" click.delegate=\"toggle()\"></div><div id=\"myPanelDefault\" class=\"${display ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a href=\"#\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_about-us\"><h1>ВОПРОСЫ-ОТВЕТЫ</h1><div class=\"wrapper\"><div class=\"wrap_faq\"><div class=\"accordion\" data-init=\"accordion\"><div repeat.for=\"row of list\" class=\"accordion-item ${row.active ? 'active' : ''}\"><div class=\"accordion-item-head\" click.delegate=\"show(row)\"><div class=\"accordion-title\">${row.question}</div><div class=\"accordion-toggler\"></div></div><div class=\"accordion-item-body\" innerhtml.bind=\"row.answer\"></div></div></div><div class=\"wrap_form-massage\"><h5>Не нашли ответа на свой вопрос? Задайте его нам</h5><form role=\"form\" submit.delegate=\"postData()\" class=\"faq-form\" id=\"mail\"><input type=\"text\" name=\"name\" value.bind=\"fio\" placeholder=\"ФИО\" required> <input type=\"email\" name=\"email\" value.bind=\"email\" placeholder=\"E-mail\" required><textarea name=\"message\" value.bind=\"message\" required></textarea><input type=\"submit\" value=\"Задать вопрос\"></form></div></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
 define('text!components/header/header.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"#\" class=\"burger\" id=\"menu-btn-toggle ${display ? 'active' : ''}\" click.delegate=\"toggle()\"><span></span></a><div class=\"caption-page\">О нас</div><a route-href=\"route: home\" class=\"all-company\"></a></div></div></template>"; });
@@ -5625,7 +5781,8 @@ define('text!components/home/home.html', ['module'], function(module) { module.e
 define('text!components/index/index.html', ['module'], function(module) { module.exports = "<template><div class=\"wrap_main-page\"><div class=\"main-page\"><img src=\"src/assets/img/logo-main.png\"><h3>Lorem ipsum dolor</h3><p>sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p><a route-href=\"route: about\" class=\"anonim\">Ввойти анонімно</a><h6>sit amet, consectetur adipisicing<a route-href=\"route: sign_in\"> Sign in</a></h6></div></div></template>"; });
 define('text!components/news/news.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"\" class=\"burger\" id=\"menu-btn-toggle ${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"><span></span></a><div class=\"caption-page\">Новости</div><a route-href=\"route: home\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"></div><div id=\"myPanelDefault\" class=\"${display1 ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle1()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: about\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a href=\"#\" class=\"last_item-menu\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_platform\"><h1>Новости Платформы</h1><div class=\"wrapper\"><div class=\"wrap_news\" repeat.for=\"news of myData.data\" infinite-scroll=\"callback.call: getData(); scroll-buffer: 250; is-active: true\"><a route-href=\"route: one_news; params.bind: {id:news.id}\" class=\"news\"><img src=\"http://tabletapp.nwdev.net${news.image}\"><h3 class=\"caption-news\" innerhtml.bind=\"news.title \"></h3><div class=\"short_content\" innerhtml.bind=\"news.short_content \"></div></a></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
 define('text!components/one_news/one_news.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"\" class=\"burger\" id=\"menu-btn-toggle ${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"><span></span></a><div class=\"caption-page\">${header_name}</div><a route-href=\"route: platform\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"></div><div id=\"myPanelDefault\" class=\"${display1 ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle1()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_platform\"><h1>${myData.data.title}</h1><div class=\"wrapper\"><div class=\"wrap_one-news\"><img src=\"http://tabletapp.nwdev.net${myData.data.image}\"><div class=\"wrap_data-news\"><p innerhtml.bind=\"myData.data.content | sanitizeHTML\"></p></div><a route-href=\"route: news\" class=\"prev-page\">Вернуться назад</a></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
-define('text!components/platform/platform.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"\" class=\"burger\" id=\"menu-btn-toggle ${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"><span></span></a><div class=\"caption-page\">${header_name}</div><a route-href=\"route: home\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"></div><div id=\"myPanelDefault\" class=\"${display1 ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle1()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_platform\"><h1>Акции и Платформы</h1><div class=\"wrapper\"><div class=\"wrap_form\"><div class=\"form_search\"><input type=\"text\" name=\"search\" class=\"search\" placeholder=\"Enter filter text\" value.bind=\"filters[0].value\"> <button type=\"submit\"></button></div></div><div class=\"wrapper\"><span class=\"description-text\">Поиск по ключевому слову</span><div class=\"donate-filters\"><div class=\"filter-wrapper\" click.delegate=\"toggle2()\"><div class=\"filter-head link\"><div class=\"filter-text\">Категория</div><div class=\"filter-arrow\"></div></div><select class=\"filter-list ${display2 ? 'active' : ''}\" value.bind=\"filters[1].value\"><option repeat.for=\"category1 of eyeColors\" model.bind=\"category1\">${category1}</option></select></div><div class=\"filter-wrapper\" click.delegate=\"toggle3()\"><div class=\"filter-head link\"><div class=\"filter-text\">Тип</div><div class=\"filter-arrow\"></div></div><div class=\"filter-default\">Тип</div><ul class=\"filter-list ${display3 ? 'active' : ''}\"><li><a href=\"http://super.tabletochki.org/ru/campaigns\" title=\"Все\">Все</a></li><li><a href=\"http://super.tabletochki.org/ru/campaigns?type=private\" title=\"Приватная\">Приватная</a></li><li><a href=\"http://super.tabletochki.org/ru/campaigns?type=corporate\" title=\"Корпоративная\">Корпоративная</a></li></ul></div></div><div class=\"wrap_platform\" aurelia-table=\"data.bind: list; display-data.bind: $displayData; filters.bind: filters\"><a href=\"#\" class=\"wrap_item-platform\" repeat.for=\"platforms of $displayData\"><img src=\"http://tabletapp.nwdev.net${platforms.image}\"><h3 innerhtml.bind=\"platforms.name \"></h3><p innerhtml.bind=\"platforms.target | sanitizeHTML \"></p></a></div></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li><li><a href=\"#\"></a></li></ul></div></div></template>"; });
+define('text!components/one_platform/one_platform.html', ['module'], function(module) { module.exports = "<template><require from=\"swiper/css/swiper.min.css\"></require><div class=\"header\"><div class=\"wrapper\"><a href=\"\" class=\"burger\" id=\"menu-btn-toggle ${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"><span></span></a><div class=\"caption-page\">${header_name}</div><a route-href=\"route: home\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"></div><div id=\"myPanelDefault\" class=\"${display1 ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle1()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_platform\"><h1>${myData.name}</h1><div class=\"wrapper\"><section class=\"tabs\"><div class=\"swiper-container\"><div class=\"swiper-wrapper\"><div class=\"swiper-slide\"><div class=\"wrap_slide\"><label for=\"tab_1\" id=\"tab_l1\">Описание</label></div></div><div class=\"swiper-slide\"><div class=\"wrap_slide\"><label for=\"tab_2\" id=\"tab_l2\">Помощь</label></div></div><div class=\"swiper-slide\"><div class=\"wrap_slide\"><label for=\"tab_3\" id=\"tab_l3\">Благотворители</label></div></div></div></div><input id=\"tab_1\" type=\"radio\" name=\"tab\" checked=\"checked\"> <input id=\"tab_2\" type=\"radio\" name=\"tab\"> <input id=\"tab_3\" type=\"radio\" name=\"tab\"><div style=\"clear:both\"></div><div class=\"tabs_cont\"><div id=\"tab_c1\"><div class=\"desc\"><img src=\"http://tabletapp.nwdev.net${myData.image}\"><div class=\"data-desc\" innerhtml.bind=\"myData.target | sanitizeHTML\"></div></div></div><div id=\"tab_c2\"><div class=\"wrap-donat\"><form role=\"form\" submit.delegate=\"postData()\"><h3>Пожертвование от имени</h3><input type=\"text\" placeholder=\"Username\" name=\"username\" id=\"username\"><h3>ВВЕДИТЕ ДРУГУЮ СУММУ</h3><input type=\"text\" placeholder=\"\" name=\"sum_many\" id=\"sum_many\"><h3>Комментарий</h3><input type=\"text\" name=\"coment\" id=\"coment\"> <input type=\"submit\" value=\"Помочь сейчас!\"></form></div></div><div id=\"tab_c3\"><div class=\"wrap-help\"><h3>список пожертвований</h3><div class=\"list-helpers\"><div class=\"help clearfix\" repeat.for=\"help of list\"><h4 innerhtml.bind=\"help.name | sanitizeHTML\"></h4><span innerhtml.bind=\"help.amount +' '+ help.currency | sanitizeHTML\"></span></div></div></div></div></div></section></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"http://twitter.com/tabletochki\"></a></li><li><a href=\"https://vk.com/tabletochkiorg\"></a></li><li><a href=\"https://www.facebook.com/tabletochki/\"></a></li><li><a href=\"https://instagram.com/tabletochki_official/\"></a></li></ul></div></div></template>"; });
+define('text!components/platform/platform.html', ['module'], function(module) { module.exports = "<template><div class=\"header\"><div class=\"wrapper\"><a href=\"\" class=\"burger\" id=\"menu-btn-toggle ${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"><span></span></a><div class=\"caption-page\">${header_name}</div><a route-href=\"route: home\" class=\"all-company\"></a></div></div><div id=\"overlay\" class=\"${display1 ? 'active' : ''}\" click.delegate=\"toggle1()\"></div><div id=\"myPanelDefault\" class=\"${display1 ? 'active' : ''}\"><ul class=\"style_menu\" style=\"display:block;margin-top:0;margin-bottom:0\"><a href=\"#\" class=\"close\" click.delegate=\"toggle1()\"></a> <span class=\"user_name\">Tiffany Henderson</span><li><a route-href=\"route: index\">Главная страница</a></li><li><a route-href=\"route: about\">О нас</a></li><li><a route-href=\"route: platform\">Кампании</a></li><li><a route-href=\"route: news\">Новости платформы</a></li><li><a route-href=\"route: faq\">Частые вопросы</a></li><li><a class=\"last_item-menu\" route-href=\"route: index\">Выйти</a></li></ul></div><div class=\"main\"><div class=\"wrapper\"><div class=\"top_layout\"><div class=\"wrap_platform\"><h1>Акции и Платформы</h1><div class=\"wrapper\"><div class=\"wrap_form\"><div class=\"form_search\"><input type=\"text\" name=\"search\" class=\"search\" placeholder=\"Enter filter text\" value.bind=\"filters[0].value\"> <button type=\"submit\"></button></div></div><div class=\"wrapper\"><span class=\"description-text\">Поиск по ключевому слову</span><div class=\"donate-filters\"><div class=\"filter-wrapper\" click.delegate=\"toggle2()\"><div class=\"filter-head link\"><div class=\"filter-text\">Категория</div><div class=\"filter-arrow\"></div></div><select class=\"filter-list ${display2 ? 'active' : ''}\" value.bind=\"filters[1].value\"><option repeat.for=\"category1 of eyeColors\" model.bind=\"category1\">${category1}</option></select></div><div class=\"filter-wrapper\" click.delegate=\"toggle3()\"><div class=\"filter-head link\"><div class=\"filter-text\">Тип</div><div class=\"filter-arrow\"></div></div><div class=\"filter-default\">Тип</div><ul class=\"filter-list ${display3 ? 'active' : ''}\"><li><a href=\"http://super.tabletochki.org/ru/campaigns\" title=\"Все\">Все</a></li><li><a href=\"http://super.tabletochki.org/ru/campaigns?type=private\" title=\"Приватная\">Приватная</a></li><li><a href=\"http://super.tabletochki.org/ru/campaigns?type=corporate\" title=\"Корпоративная\">Корпоративная</a></li></ul></div></div><div class=\"wrap_platform\" aurelia-table=\"data.bind: list; display-data.bind: $displayData; filters.bind: filters\"><a route-href=\"route: one_platform; params.bind: {id:platforms.id}\" class=\"wrap_item-platform\" repeat.for=\"platforms of $displayData\"><img src=\"http://tabletapp.nwdev.net${platforms.image}\"><h3 innerhtml.bind=\"platforms.name \"></h3><p innerhtml.bind=\"platforms.target | sanitizeHTML \"></p></a></div></div></div></div></div></div></div><div class=\"footer\"><h3>Мы в соц. сетях</h3><div class=\"wrap_share\"><ul><li><a href=\"http://twitter.com/tabletochki\"></a></li><li><a href=\"https://vk.com/tabletochkiorg\"></a></li><li><a href=\"https://www.facebook.com/tabletochki/\"></a></li><li><a href=\"https://instagram.com/tabletochki_official/\"></a></li></ul></div></div></template>"; });
 define('text!components/post_data/post_data.html', ['module'], function(module) { module.exports = "<template><p>111111111111</p><button click.delegate=\"getData()\">GET</button> <button click.delegate=\"postData()\">POST</button> <button click.delegate=\"updateData()\">PUT</button> <button click.delegate=\"deleteData()\">DEL</button><h3 innerhtml.bind=\"myData.data.content | sanitizeHTML\"></h3><h4 repeat.for=\"error of myData.data\"><p innerhtml.bind=\"error.short_content | sanitizeHTML\"></p></h4></template>"; });
 define('text!components/sign_in/sign_in.html', ['module'], function(module) { module.exports = "<template><div class=\"wrap_main-page\"><div class=\"sign_in\"><img src=\"src/assets/img/logo-main.png\"><form action=\"#\" method=\"post\"><input type=\"email\" name=\"email\" placeholder=\"E-mail\"> <input type=\"password\" name=\"password\" placeholder=\"Пароль\"> <a route-href=\"route: index\" class=\"forgot_password\">Забыли пароль?</a> <input type=\"submit\" value=\"Авторизироваться\"></form><div class=\"wrap_registr-anonim clearfix\"><a route-href=\"route: about\">Регистрация</a> <a route-href=\"route: about\">Анонимно</a></div></div></div></template>"; });
 define('text!resources/elements/accordion/index.html', ['module'], function(module) { module.exports = ""; });

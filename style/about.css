@@ -170,7 +170,16 @@ nav ul li a {
     background: #063b4f!important;
 }
 .swiper-container{
-    min-height: 260px;
+    min-height: 320px;
+}
+.wrap_slide p{
+    text-align: center;
+    margin-top: 10px;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 0px;
+    left: 0;
+    width: 100%;
 }
 @media (max-width: 349px) {
     .work_item p {

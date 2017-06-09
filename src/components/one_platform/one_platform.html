@@ -1,0 +1,146 @@
+<template>
+    <require from="swiper/css/swiper.min.css"></require>
+    <div class="header">
+        <div class="wrapper">
+            <a href="" class=" burger"  id="menu-btn-toggle ${display1 ? 'active' : ''}"  click.delegate="toggle1()" ><span></span></a>
+            <div class="caption-page">${header_name}</div>
+            <a  route-href="route: home" class="all-company"></a>
+        </div>
+    </div>
+    <!--<a href="#" id="menu-btn-toggle" class=""></a>-->
+    <div id="overlay" class="${display1 ? 'active' : ''}" click.delegate="toggle1()"> </div>
+    <div id="myPanelDefault" class="${display1 ? 'active' : ''}"  >
+        <ul class="style_menu "  style="display: block; margin-top: 0; margin-bottom: 0" >
+            <a href="#" class="close" click.delegate="toggle1()"></a>
+            <span class="user_name">Tiffany Henderson</span>
+            <li>
+                <a route-href="route: index">Главная страница</a>
+            </li>
+            <li>
+                <a route-href="route: about">О нас</a>
+            </li>
+            <li>
+                <a route-href="route: platform">Кампании</a>
+            </li>
+            <li>
+                <a route-href="route: news">Новости платформы</a>
+            </li>
+            <li>
+                <a route-href="route: faq" >Частые вопросы</a>
+            </li>
+            <li>
+                <a class="last_item-menu" route-href="route: index">Выйти</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="main">
+        <div class="wrapper">
+            <div class="top_layout">
+                <div class="wrap_platform">
+                    <h1>${myData.name}</h1>
+                    <div class="wrapper">
+
+                        <section class="tabs">
+                            <!--aaaaaaaaa-->
+                            <div class="swiper-container">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    <div class="swiper-slide">
+                                        <div class="wrap_slide">
+                                            <label for="tab_1" id="tab_l1">Описание</label>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="wrap_slide">
+                                            <label for="tab_2" id="tab_l2">Помощь</label>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="wrap_slide">
+                                            <label for="tab_3" id="tab_l3">Благотворители</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- If we need pagination -->
+                                <!--<div class="tariffs-gallery__pagination swiper-pagination"></div>-->
+
+                                <!-- If we need navigation buttons -->
+                                <!--<div class="swiper-button-prev"></div>-->
+                                <!--<div class="swiper-button-next"></div>-->
+                            </div>
+                            <!--aaaaa-->
+                            <input id="tab_1" type="radio" name="tab" checked="checked" />
+                            <input id="tab_2" type="radio" name="tab" />
+                            <input id="tab_3" type="radio" name="tab" />
+
+                            <!--<label for="tab_1" id="tab_l1">Tab One</label>-->
+                            <!--<label for="tab_2" id="tab_l2">Tab Two</label>-->
+                            <!--<label for="tab_3" id="tab_l3">Tab Three</label>-->
+                            <div style="clear:both"></div>
+
+                            <div class="tabs_cont">
+                                <div id="tab_c1">
+                                    <div class="desc">
+                                        <img src="http://tabletapp.nwdev.net${myData.image}">
+                                        <div class="data-desc" innerHTML.bind="myData.target | sanitizeHTML">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab_c2">
+                                    <div class="wrap-donat">
+                                        <form role = "form" submit.delegate = "postData()" >
+                                        <h3>Пожертвование от имени</h3>
+                                        <input type="text" placeholder="Username" name="username" id="username">
+                                            <h3>ВВЕДИТЕ ДРУГУЮ СУММУ</h3>
+                                            <input type="text" placeholder="" name="sum_many" id="sum_many">
+                                            <h3>Комментарий</h3>
+                                            <input type="text" name="coment" id="coment">
+                                            <input type="submit" value="Помочь сейчас!">
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <div id="tab_c3">
+                                    <div class="wrap-help">
+                                        <h3>список пожертвований</h3>
+                                        <div class="list-helpers" >
+                                            <div class="help clearfix" repeat.for="help of list">
+                                                <!--${$index} - ${help}-->
+                                                <h4  innerHTML.bind="help.name | sanitizeHTML"></h4>
+                                                <span innerHTML.bind="help.amount +' '+ help.currency | sanitizeHTML"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <h3>Мы в соц. сетях</h3>
+        <div class="wrap_share">
+            <ul>
+                <li>
+                    <a href="http://twitter.com/tabletochki"></a>
+                </li>
+                <li>
+                    <a href="https://vk.com/tabletochkiorg"></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/tabletochki/ "></a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/tabletochki_official/"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</template>

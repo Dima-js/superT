@@ -16,6 +16,7 @@ export class Home {
             .then(response => response.json())
             .then(data => {
                 this.list = data.data;
+                console.log(this.list);
             })
             .then(() => this.populateColors())
     }

@@ -87,7 +87,7 @@
                             </div>
 
                             <div class="wrap_platform" aurelia-table="data.bind: list; display-data.bind: $displayData; filters.bind: filters">
-                                <a href="#" class="wrap_item-platform" repeat.for="platforms of $displayData"   >
+                                <a route-href="route: one_platform; params.bind: {id:platforms.id}" class="wrap_item-platform" repeat.for="platforms of $displayData"   >
 
                                     <img src="http://tabletapp.nwdev.net${platforms.image}">
                                     <h3 innerHTML.bind="platforms.name "></h3>
@@ -108,16 +108,16 @@
         <div class="wrap_share">
             <ul>
                 <li>
-                    <a href="#"></a>
+                    <a href="http://twitter.com/tabletochki"></a>
                 </li>
                 <li>
-                    <a href="#"></a>
+                    <a href="https://vk.com/tabletochkiorg"></a>
                 </li>
                 <li>
-                    <a href="#"></a>
+                    <a href="https://www.facebook.com/tabletochki/ "></a>
                 </li>
                 <li>
-                    <a href="#"></a>
+                    <a href="https://instagram.com/tabletochki_official/"></a>
                 </li>
             </ul>
         </div>

@@ -56,26 +56,13 @@
                                     <!-- Additional required wrapper -->
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
-                                        <div class="swiper-slide">
+                                        <div class="swiper-slide" repeat.for="platforms of list">
                                             <div class="wrap_slide">
-                                                <img src="src/assets/img/slaid1.png">
-                                                <img src="">
-                                                <span>1 000 гривен</span>
+                                                <img src="http://tabletapp.nwdev.net${platforms.image}">
+                                                <span innerHTML.bind="platforms.title "></span>
+                                                <p innerHTML.bind="platforms.text "></p>
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="wrap_slide">
-                                                <img src="src/assets/img/slaid1.png">
-                                                <span>1 001 гривен</span>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="wrap_slide">
-                                                <img src="src/assets/img/slaid1.png">
-                                                <span>1 002 гривен</span>
-                                            </div>
-                                        </div>
-
                                     </div>
                                     <!-- If we need pagination -->
                                     <div class="tariffs-gallery__pagination swiper-pagination"></div>
@@ -83,10 +70,7 @@
                                     <!-- If we need navigation buttons -->
                                     <!--<div class="swiper-button-prev"></div>-->
                                     <!--<div class="swiper-button-next"></div>-->
-
                                 </div>
-
-
                             </div>
                         </div>
                         <a href="#" class="btn-help">Помочь сейчас!</a>
@@ -94,15 +78,19 @@
                             <h3>как это работает</h3>
                             <div class="work_item clearfix">
                                 <div class="number_work">1</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <p>
+                                    ДЛЯ СЕБЯ И ДЛЯ ДРУЗЕЙ
+                                    Подарки на день рождения, благотворительные забеги, ярмарки и распродажи. Выберите свой формат кампании, регистрируйтесь на сайте и собирайте друзей</p>
                             </div>
                             <div class="work_item clearfix">
                                 <div class="number_work">2</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <p>ДЛЯ ОФИСА И ДЛЯ КОЛЛЕГ
+                                    Ярмарки, распродажи, корпоративы и отказ от сувениров. Выберите удобный формат акции для офиса, коллег и партнеров, и регистрируйтесь на сайте</p>
                             </div>
                             <div class="work_item clearfix">
                                 <div class="number_work">3</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <p>Выберите акцию, которую
+                                    хотите поддержать</p>
                             </div>
                         </div>
                     </div>
